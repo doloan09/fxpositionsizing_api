@@ -20,7 +20,7 @@ class CurrencyExcRateController extends Controller
             return new CurrencyExcRateResource($item);
         }
 
-        return abort(403);
+        return response()->json(['status' => 403]);
     }
 
     public function updateRate()
