@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \Illuminate\Console\KeyGenerateCommand::class,
+        \App\Console\Commands\CurrencyExcRateCommand::class,
     ];
 
     /**
@@ -24,6 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //
+        $schedule->command('currency')->everyThirtyMinutes();
     }
 }
