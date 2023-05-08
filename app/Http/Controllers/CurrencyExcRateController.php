@@ -12,15 +12,10 @@ class CurrencyExcRateController extends Controller
     {
         $from_currency = $request->get('from_currency');
         $to_currency   = $request->get('to_currency');
-        $apikey        = $request->get('apikey');
 
-        if ($apikey === env('API_KEY')){
-            $item = CurrencyExcRate::query()->where('from_currency_code', $from_currency)->where('to_currency_code', $to_currency)->first();
+        $item = CurrencyExcRate::query()->where('from_currency_code', $from_currency)->where('to_currency_code', $to_currency)->first();
 
-            return new CurrencyExcRateResource($item);
-        }
-
-        return response()->json(['status' => 403]);
+        return new CurrencyExcRateResource($item);
     }
 
     public function updateRate()

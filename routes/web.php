@@ -19,5 +19,9 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/api/get-rate', 'CurrencyExcRateController@getRate');
+$router->get('/api/get-rate', [
+    'middleware' => 'currency-apikey',
+    'uses' => 'CurrencyExcRateController@getRate'
+]);
+
 $router->post('/api/update-rate', 'CurrencyExcRateController@updateRate');
