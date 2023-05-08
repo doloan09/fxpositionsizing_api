@@ -30,7 +30,7 @@ class CurrencyExcRateController extends Controller
             $json = file_get_contents($url);
             $data = json_decode($json,true);
 
-            if ($data){
+            if (isset($data["Realtime Currency Exchange Rate"])){
                 $data_currency['from_currency_code'] = $data["Realtime Currency Exchange Rate"]["1. From_Currency Code"];
                 $data_currency['from_currency_name'] = $data["Realtime Currency Exchange Rate"]["2. From_Currency Name"];
                 $data_currency['to_currency_code']   = $data["Realtime Currency Exchange Rate"]["3. To_Currency Code"];
